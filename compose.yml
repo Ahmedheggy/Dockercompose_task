@@ -1,12 +1,13 @@
+version: '3'                            # specify docker compose version
 services:
-  web:
-    build: .
-    ports:
+  web:                                  # Run service "web"
+    build: .                            # Build img in the current Directory
+    ports:                          # Port mapping from serv port "5000" to host "8000"
       - "8000:5000"
-    develop:
-      watch:
+    develop:                            
+      watch:                            # Allow Docker compose watch to alter "app.py"
         - action: sync
           path: .
           target: /code
-  redis:
+  redis:                               # Run redis service with alpine linux 
     image: "redis:alpine"
