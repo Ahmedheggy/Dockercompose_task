@@ -5,7 +5,7 @@ services:
     ports:                          # Port mapping from serv port "5000" to host "8000"
       - "8000:5000"
     develop:                            
-      watch:                            # Allow Docker compose watch to alter "app.py"
+      watch:                            # Allow Docker compose watch to monitor changes and sync
         - action: sync
           path: .
           target: /code
