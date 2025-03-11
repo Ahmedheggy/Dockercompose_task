@@ -1,13 +1,13 @@
-version: '3'                            # specify docker compose version
+version: '3.8'                # Specify the Docker Compose version
 services:
-  web:                                  # Run service "web"
-    build: .                            # Build img in the current Directory
-    ports:                          # Port mapping from serv port "5000" to host "8000"
-      - "8000:5000"
-    develop:                            
-      watch:                            # Allow Docker compose watch to monitor changes and sync
+  web:                        # Define the web application service
+    build: .                    # Build from the Dockerfile in the current directory
+    ports:
+      - "8000:5000"           # Map port 5000 in the container to 8000 on the host
+    develop:                           # Monitor changes on app 
+      watch:                           
         - action: sync
-          path: .
+          path: .                      # sync to local directory
           target: /code
-  redis:                               # Run redis service with alpine linux 
-    image: "redis:alpine"
+  redis:                               # Define redis serv
+    image: "redis:alpine"              # use Alpine-based Redis image
